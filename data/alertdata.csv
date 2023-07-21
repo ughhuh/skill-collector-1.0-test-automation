@@ -1,0 +1,2 @@
+*** Test Cases ***;${hash};e{skills_1};e{skills_2};e{skills_3};e{skills_4};e{skills_soft};[Tags]
+Skill Selection Alert;0123456789;['pemt-1', 'inva-1', 'desn-1', 'port-1', 'prmg-1', 'dbds-1'];['dats-2', 'hpcc-2', 'resc-2', 'rfen-2', 'bpre-2', 'metl-2'];['govn-3', 'itsp-3', 'hcev-3', 'scmg-3', 'wfpl-3', 'csop-3'];['usev-4', 'pdsv-4', 'tmcr-4', 'demm-4', 'arch-4', 'dcma-4'];['lead-1', 'coso-1', 'empa-2', 'chad-2', 'twor-3', 'comm-3'];Functional,Regression,FEA21,FEA29
