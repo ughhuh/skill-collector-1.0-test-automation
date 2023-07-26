@@ -1,1 +1,3 @@
 robotframework-datadriver
+requests
+pandas

@@ -16,7 +16,7 @@ ${browser}    chromium
 *** Test Cases ***
 Click Navigation Headers
     [Tags]    Functional    Regression    FEA32
-    Access Hard Skills
+    Access Hard Skills    0123456789
 
     ${headers}=   Get Elements    div.navbar > a 
 
@@ -28,7 +28,7 @@ Click Navigation Headers
 
 Scroll The Page
     [Tags]    Functional    FEA03
-    Access Hard Skills
+    Access Hard Skills    0123456789
     
     ${headers}   Get Elements    section > h2
     Remove From List    ${headers}    0

@@ -17,15 +17,15 @@ ${browser}    chromium
 
 *** Test Cases ***
 Check Hard Skills
-    ${skills_1}    ${skills_2}    ${skills_3}    ${skills_4}    ${skills_btn}    ${setup}
+    ${hash}    ${skills_1}    ${skills_2}    ${skills_3}    ${skills_4}    ${skills_btn}    ${setup}
 
 Check Soft Skills
-    ${skills_1}    ${skills_2}    ${skills_3}    ${skills_4}    ${skills_btn}    ${setup}
+    ${hash}    ${skills_1}    ${skills_2}    ${skills_3}    ${skills_4}    ${skills_btn}    ${setup}
 
 *** Keywords ***
 Cycle Skills
-    [Arguments]        ${skills_1}    ${skills_2}    ${skills_3}    ${skills_4}    ${skills_btn}    ${setup}
-    Run Keyword    ${setup}
+    [Arguments]    ${hash}    ${skills_1}    ${skills_2}    ${skills_3}    ${skills_4}    ${skills_btn}    ${setup}
+    Run Keyword    ${setup}    ${hash}
     
     ${button_count}=    Get Length    ${skills_1}
     ${column_count}=    Get Length    ${skills_4}

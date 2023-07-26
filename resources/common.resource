@@ -16,11 +16,13 @@ Open Page In Browser
 
 ### Skill Page Setups ###
 Access Hard Skills
-    Enter Hash    0123456789
+    [Arguments]    ${hash}
+    Enter Hash    ${hash}
     Click Continue Button
 
 Access Soft Skills
-    Enter Hash    0123456789
+    [Arguments]    ${hash}
+    Enter Hash    ${hash}
     Click Continue Button
     Click Continue Button
 ### END ###
@@ -82,6 +84,13 @@ Change Language
 ### END ###
 
 ### Skill Selection ###
+Select N Skills
+    [Arguments]    ${skills}
+
+    FOR    ${skill}    IN    @{skills}
+        Click    input#${skill}
+    END
+
 Select 20 Hard Skills
     [Arguments]    ${skills_1}    ${skills_2}    ${skills_3}    ${skills_4}
     ${init_count}=    Get Element Count    div.progress

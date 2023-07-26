@@ -18,15 +18,15 @@ ${browser}    chromium
 
 *** Test Cases ***
 Hover Hard Skills
-    ${setup}    ${skills_id}    ${skills_name}    ${skills_desc}
+    ${hash}    ${setup}    ${skills_id}    ${skills_name}    ${skills_desc}
 
 Hover Soft Skills
-    ${setup}    ${skills_id}    ${skills_name}    ${skills_desc}
+    ${hash}    ${setup}    ${skills_id}    ${skills_name}    ${skills_desc}
 
 *** Keywords **
 Hover Tooltip
-    [Arguments]    ${setup}    ${skills_id}    ${skills_name}    ${skills_desc}
-    Run Keyword    ${setup}
+    [Arguments]    ${hash}    ${setup}    ${skills_id}    ${skills_name}    ${skills_desc}
+    Run Keyword    ${setup}    ${hash}
     ${hover_count}=    Get Length    ${skills_id}
     
     FOR    ${index}    IN RANGE   ${hover_count}

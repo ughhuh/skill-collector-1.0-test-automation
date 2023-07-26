@@ -4,12 +4,6 @@ Library          Browser
 Library          Collections
 
 *** Keywords ***
-Select N Skills
-    [Arguments]    ${skills}
-
-    FOR    ${skill}    IN    @{skills}
-        Click    input#${skill}
-    END
 
 Check Submit Alert
     [Arguments]    ${error_message}

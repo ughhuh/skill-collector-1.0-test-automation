@@ -1,2 +1,3 @@
-*** Test Cases ***;${hash};e{skills_1};e{skills_2};e{skills_3};e{skills_4};e{skills_soft};[Tags]
-Skill Selection Alert;0123456789;['pemt-1', 'inva-1', 'desn-1', 'port-1', 'prmg-1', 'dbds-1'];['dats-2', 'hpcc-2', 'resc-2', 'rfen-2', 'bpre-2', 'metl-2'];['govn-3', 'itsp-3', 'hcev-3', 'scmg-3', 'wfpl-3', 'csop-3'];['usev-4', 'pdsv-4', 'tmcr-4', 'demm-4', 'arch-4', 'dcma-4'];['lead-1', 'coso-1', 'empa-2', 'chad-2', 'twor-3', 'comm-3'];Functional,Regression,FEA21,FEA29
+*** Test Cases ***;${hash};e{skills_1};e{skills_2};e{skills_3};e{skills_4};e{categories};${number};${setup};[Tags]
+Too Many Hard Skills;0123456789;['eexp-1', 'hpcc-1', 'prmg-1', 'vure-1', 'asmg-1', 'cnsl-1'];['emrg-2', 'feas-2', 'ordi-2', 'dats-2', 'admn-2', 'datm-2'];['swdn-3', 'arch-3', 'ntas-3', 'audt-3', 'sfen-3', 'inov-3'];['chmg-4', 'pomg-4', 'know-4', 'icpm-4', 'rlmt-4', 'fmit-4'];['Future need', 'Valuable', 'Important', 'Most Important'];5;Access Hard Skills;Functional,Regression,FEA21
+Too Many Soft Skills;0123456789;['flex-1', 'lead-1'];['netw-2', 'coso-2'];['comm-3', 'coop-3'];[];['Valuable', 'Important', 'Very Important'];1;Access Soft Skills;Functional,Regression,FEA29

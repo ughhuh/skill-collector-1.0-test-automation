@@ -51,6 +51,7 @@ for i in skills:
 
 data_1 = {
     '*** Test Cases ***': ['Cycle Hard Skills', 'Cycle Soft Skills'],
+    '${hash}': ['0123456789','0123456789'],
     '${setup}': ['Access Hard Skills','Access Soft Skills'],
     'e{skills_1}': [hard_skills_1, soft_skills_1],
     'e{skills_2}': [hard_skills_2, soft_skills_2],
@@ -62,6 +63,7 @@ data_1 = {
 
 data_2 = {
     '*** Test Cases ***': ['Hover Hard Skills', 'Hover Soft Skills'],
+    '${hash}': ['0123456789','0123456789'],
     '${setup}': ['Access Hard Skills','Access Soft Skills'],
     'e{skills_id}': [hard_skills_id, soft_skills_id],
     'e{skills_name}': [hard_skills_name, soft_skills_name],
@@ -72,5 +74,5 @@ data_2 = {
 df_1 = pd.DataFrame(data_1)
 df_2 = pd.DataFrame(data_2)
 
-df_1.to_csv('../data/cycledata.csv', index=False, sep=";", encoding='utf-8')
-df_2.to_csv('../data/hoverdata.csv', index=False, sep=";", encoding='utf-8')
+df_1.to_csv('data/cycledata.csv', index=False, sep=";", encoding='utf-8')
+df_2.to_csv('data/hoverdata.csv', index=False, sep=";", encoding='utf-8')
