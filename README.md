@@ -120,8 +120,6 @@ These scripts are used to maintain the test data integrity and ensure accurate a
 Test Suites are located in the `tests` folder. The names of the test suites are descriptive of their contents, and each suite contains related test. The tests are designed to be independent of each other. Initialization is handled using a common setup and teardown, and sometimes custom setups like `Access Hard Skills` and `Access Soft Skills` in data-driven tests are used as the tests need to be performed on different pages.
 
 - `tests/` - Test Suites folder
-
-- `tests/` - Test Suites folder
   - `backtracking.robot` - Test Suite to verify skill selection persistence.
   - `cycle_skills.robot` - Test Suite to verify skill selection/deselection functionality and progress bar update.
   - `e2e.robot` - Test Suite to verify basic user workflow in different languages.
