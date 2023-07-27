@@ -291,7 +291,7 @@ Alena Galysheva - [LinkedIn](https://www.linkedin.com/in/alena-galysheva/) - <al
 
 Skill Collector Documentation: <https://wimma-lab-2023.pages.labranet.jamk.fi/overflow/core-skill-collector-1.0/>
 
-Skill Collector Source Code: <>
+Skill Collector Source Code: <https://github.com/nikokarvinen/skillcollector>
 
 WIMMA Lab: <https://www.wimmalab.org/>
 
