@@ -8,6 +8,8 @@ The application functions by allowing the user to log in using a unique hash cod
 
 The primary focus of the Skill Collector 1.0 automated tests is to validate the functionality of the frontend features and emulate a typical user workflow. The following features are verified through the automated tests:
 
+- FEA03-Customer-Feedback-system 1.0
+- FEA04-GDPR-Info 1.0
 - FEA20-skill-info-view
 - FEA21-skill-selection-view
 - FEA29-Softskill-selection-view
@@ -21,27 +23,27 @@ Technologies and frameworks used include Robot Framework, Browser library, DataD
 
 ## Table of Contents
 
-- [Getting Started](##getting-started)
-  - [Build the Docker Image](###build-the-docker-image)
-  - [Run the Tests](###run-the-tests)
-  - [Customizing Test Execution](###-customizing-test-execution)
-  - [Run Python Scripts](###run-python-scripts)
-- [Project Structure](##project-structure)
-  - [Root Folder](###root-folder)
-  - [Test Suites](###test-suites)
-  - [Resources](###resources)
-  - [Data](###data)
-  - [Scripts](###scripts)
-  - [Reports](###reports)
-- [Test Cases](##test-cases)
-- [Test Execution and Reporting](###test-execution-and-reporting)
-- [Test Coverage and Limitations](##test-coverage-and-limitations)
-  - [Covered Areas](###covered-areas)
-  - [Areas Not Covered](###areas-not-covered)
-  - [Future Enhancements](###future-enhancements)
-- [Acknowledgements](##acknowledgements)
-- [Contact Information](##contact-information)
-- [Conclusion](##conclusion)
+- [Getting Started](#getting-started)
+  - [Build the Docker Image](#build-the-docker-image)
+  - [Run the Tests](#run-the-tests)
+  - [Customizing Test Execution](#customizing-test-execution)
+  - [Run Python Scripts](#run-python-scripts)
+- [Project Structure](#project-structure)
+  - [Root Folder](#root-folder)
+  - [Test Suites](#test-suites)
+  - [Resources](#resources)
+  - [Data](#data)
+  - [Scripts](#scripts)
+  - [Reports](#reports)
+- [Test Cases](#test-cases)
+- [Test Execution and Reporting](#test-execution-and-reporting)
+- [Test Coverage and Limitations](#test-coverage-and-limitations)
+  - [Covered Areas](#covered-areas)
+  - [Areas Not Covered](#areas-not-covered)
+  - [Enhancements](#enhancements)
+- [Acknowledgements](#acknowledgements)
+- [Contact Information](#contact-information)
+- [Conclusion](#conclusion)
 
 ## Getting Started
 
@@ -50,31 +52,31 @@ Technologies and frameworks used include Robot Framework, Browser library, DataD
 To build the Docker image for running the Skill Collector 1.0 Test Automation, use the following command:
 
 ```bash
-docker build -t my-robotframework-dockerimage .
+docker build -t skill-collector-1-0-docker-tests .
 ```
 
-This command will build the Docker image with the tag "my-robotframework-dockerimage" based on the Dockerfile in the current directory.
+This command will build the Docker image with the tag `skill-collector-1-0-docker-tests` based on the Dockerfile in the current directory.
 
 ### Run the Tests
 
 To run the Skill Collector 1.0 Test Automation, execute the following command:
 
 ```bash
-docker run -it --rm -v "$(pwd):/skill-collector-1.0-test-automation" -w /skill_collector my-robotframework-dockerimage bash -c "robot --outputdir /skill-collector-1.0-test-automation/reports /skill-collector-1.0-test-automation/tests"
+docker run -it --rm -v "$(pwd):/skill-collector-1.0-test-automation" -w /skill_collector skill-collector-1-0-docker-tests bash -c "robot --outputdir /skill-collector-1.0-test-automation/reports /skill-collector-1.0-test-automation/tests"
 ```
 
 This command runs the Robot Framework tests inside the Docker container. The tests are located in the "/skill-collector-1.0-test-automation/tests" directory. The results of the test execution will be stored in the "/skill-collector-1.0-test-automation/reports" directory.
 
 ### Customizing Test Execution
 
-You can customize the name of the top level suite using the `--name` option. The default name is `Tests`. 
+You can customize the name of the top level suite using the `--name` option. The default name is `Tests`.
 
 You can customize the test execution using the `--variable` option to pass `browser` and `url` variables. These variables define the browser name and the link to the deployed Skill Collector frontend, respectively. If you don't provide these variables, the default values `chromium` and `http://86.50.230.87/` will be used.
 
 Example:
 
 ```bash
-docker run -it --rm -v "$(pwd):/skill-collector-1.0-test-automation" -w /skill_collector my-robotframework-dockerimage bash -c "robot --name 'Skill Collector Tests' --variable browser:firefox --variable url:http://link-to-sc.com --outputdir /skill-collector-1.0-test-automation/reports /skill-collector-1.0-test-automation/tests"
+docker run -it --rm -v "$(pwd):/skill-collector-1.0-test-automation" -w /skill_collector skill-collector-1-0-docker-tests bash -c "robot --name 'Skill Collector Tests' --variable browser:firefox --variable url:http://link-to-sc.com --outputdir /skill-collector-1.0-test-automation/reports /skill-collector-1.0-test-automation/tests"
 ```
 
 In this example, the test suite is named `Skill Collector Tests`. The tests will be executed using Firefox as the browser and the specified custom URL for the Skill Collector frontend. Replace <http://link-to-sc.com> with the actual URL you want to use for testing.
@@ -90,7 +92,7 @@ The `generate_e2e_alert_deny_data.py` script generates data for the `End-To-End`
 To run the `generate_e2e_alert_deny_data.py` script, use the following command:
 
 ```bash
-docker run -it --rm -v "$(pwd):/skill-collector-1.0-test-automation" my-robotframework-dockerimage python3 scripts/generate_e2e_alert_deny_data.py
+docker run -it --rm -v "$(pwd):/skill-collector-1.0-test-automation" skill-collector-1-0-docker-tests python3 scripts/generate_e2e_alert_deny_data.py
 ```
 
 ### Data Generation for Regression Test Suites
@@ -100,7 +102,7 @@ The `generate_cycle_hover_data.py` script generates data for the `Cycle Skills` 
 To run the `generate_cycle_hover_data.py` script, use the following command:
 
 ```bash
-docker run -it --rm -v "$(pwd):/skill-collector-1.0-test-automation" my-robotframework-dockerimage python3 scripts/generate_cycle_hover_data.py
+docker run -it --rm -v "$(pwd):/skill-collector-1.0-test-automation" skill-collector-1-0-docker-tests python3 scripts/generate_cycle_hover_data.py
 ```
 
 These scripts are used to maintain the test data integrity and ensure accurate and up-to-date test results. Run them when needed and when Skills DB is updated.
@@ -181,7 +183,7 @@ Workflow tests consist of several essential elements, including an optional prec
 
 Data-driven tests leverage the test template functionality, allowing for the creation of various tests with different arguments. This flexibility enables the execution of multiple variations of the same test case based on the provided data.
 
-Below is a list of the main test cases included in this project. 
+Below is a list of the main test cases included in this project.
 
 - `backtracking.robot` - Backtracking Test Suite.
   - `E2E ENG` - Test case to verify the user selections are preserved when they return to the main page and log in with the same hash.
@@ -223,7 +225,7 @@ Below is a list of the main test cases included in this project.
 
 ### Test Execution and Reporting
 
-To execute the tests, [build the Docker container](###build-the-docker-image) and [run the tests](###run-the-tests). The Docker setup ensures that all necessary dependencies are installed within the container. The required CSV files already contain the essential test data. Once the tests are executed, the test reports are generated and can be found in the `reports/` folder.
+To execute the tests, [build the Docker container](#build-the-docker-image) and [run the tests](#run-the-tests). The Docker setup ensures that all necessary dependencies are installed within the container. The required CSV files already contain the essential test data. Once the tests are executed, the test reports are generated and can be found in the `reports/` folder.
 
 `report.html`contain an overview of the test execution results in HTML format. It has a list of all executed test cases. Each test case has tags (test type tags and tags to identify what feature it's related to), and the log provides statistics based on these tags and test suites.
 
@@ -243,24 +245,58 @@ When reviewing the test reports, pay attention to the following key details:
 
 ### Covered Areas
 
-Explain the functionalities and scenarios that are covered by the current test automation suite. List the main features and use cases that have been thoroughly tested.
+The current test automation suites cover the following functionalities and scenarios of the Skill Collector 1.0 application:
+
+- **FEA03-Customer-Feedback-system 1.0**: Verification of the integration of the customer feedback system, which allows users to send feedback to the service provider.
+- **FEA04-GDPR-Info 1.0**: Validation of the integration of the GDPR statement in every service language on the home page of Skill Collector 1.0.
+- **FEA20-skill-info-view**: Verification of the skill information view, which allows users to see hard and soft skills and their descriptions as a tooltip when a question mark icon is hovered.
+- **FEA21-skill-selection-view**: Validation of the hard skill selection view, where users can select future need skills, valuable skills, important skills, and most important skills on the hard skill selection page. Verification of hard skill selection preservation when the user logs out and logs back in shortly after with the same hash. Verification of the hard skill selection limits, where the user isn't able to select less than or more than 5 skills in each category.
+- **FEA29-Softskill-selection-view**: Validation of the hard skill selection view, where users can choose valuable soft skills, important soft skills, and very important soft skills on the soft skill selection page. Verification of soft skill selection preservation when the user logs out and logs back in shortly after with the same hash. Verification of the soft skill selection limits, where the user isn't able to select less than or more than 1 skills in each category.
+- **FEA30-Progress-Bar**: Validation of the progress bar, which updates accordingly with each skill selection and deselection event on the hard skill selection page and soft skill selection page.
+- **FEA32-navigation-bar**: Verification of the navigation bar functionality on the hard skill selection page, enabling users to navigate between different skill categories.
+- **FEA40-language-selection-option**: Testing the language selection option to ensure that users can choose their preferred language for the application.
+- **End-To-End**: Validating the typical user workflow outlined in the [Overview](#overview) section of this document.
 
 ### Areas Not Covered
 
-Mention specific functionalities or scenarios that are not included in the current test automation suite. For example, if verifying the language of page elements is not part of the current tests, state that explicitly here. You can also explain the reasons behind not covering these areas, such as time constraints or technical challenges.
+The current test automation suites do not cover the following functionalities and scenarios:
 
-### Future Enhancements
+- **Backend Testing**: The current test suite focuses on frontend functionalities and does not include testing of backend systems or APIs. Manual API tests have been written previously (see: [TC-47-003](https://wimma-lab-2023.pages.labranet.jamk.fi/overflow/core-skill-collector-1.0/50-Test-management/Test%20Cases/FEA-47/TC-47-003/)) and can serve as a starting point for future automation of API testing.
+- **Accessibility Testing**: Accessibility tests are performed using the [RAMP](https://accessibleweb.com/) tool.
+- **Localization**: Although language selection is tested, the full localization testing of all application elements has not been implemented.
 
-If there are plans to expand the test coverage in the future, mention them in this section. This could include adding test cases for the areas not covered or incorporating new features as they are introduced in the application.
+### Enhancements
 
-## Acknowledgments
+Test coverage of the Skill Collector 1.0 application can be improved by including the following aspects:
 
-Show appreciation and acknowledgment for any third-party tools, frameworks, or resources used in the test automation project.
+- **Backend Integration Testing**: Incorporate test cases to verify the integration of the frontend with backend services and APIs.
+- **Smoke Testing**: Develop test cases to verify the basic functionality of the application before proceeding with the rest of the test suites.
+- **Localization Testing**: Expand the test suite to verify the localization of all application elements in different languages.
+- **Edge Cases**: Add test scenarios to cover edge cases and unusual user inputs to enhance the application's robustness.
+- **Handling Test Failures**: At times, when running all tests simultaneously, the website might encounter issues such returning a `429 Too Many Requests` status code when attempting to enter the hash. As a solution, a mechanism can be implemented to catch and handle such errors gracefully, enabling the skipping of the affected tests and preventing their inevitable failure from impacting the entire test suite.
+
+## Acknowledgements
+
+I would like to give credit to the following tools, frameworks, and resources that I found helpful while working on this project:
+
+- [Robot Framework](https://robotframework.org/)
+- [Browser Library](https://robotframework-browser.org/)
+- [DataDriver Library](https://github.com/Snooz82/robotframework-datadriver)
+- [Docker Images for Robot Framework Guide](https://docs.robotframework.org/docs/using_rf_in_ci_systems/docker)
+- [HowToWriteGoodTestCases Guide by Pekka Klärck](https://github.com/robotframework/HowToWriteGoodTestCases/tree/master)
 
 ## Contact Information
 
-Include your contact information or any other ways people can reach out to you for questions, feedback, or collaboration opportunities.
+Alena Galysheva - [LinkedIn](https://www.linkedin.com/in/alena-galysheva/) - <alena.galysheva@gmail.com>
+
+Skill Collector Documentation: <https://wimma-lab-2023.pages.labranet.jamk.fi/overflow/core-skill-collector-1.0/>
+
+Skill Collector Source Code: <>
+
+WIMMA Lab: <https://www.wimmalab.org/>
 
 ## Conclusion
 
-Wrap up the README with a concluding statement, thanking readers for visiting the repository and encouraging them to try out the test automation suite.
+Thank you for taking the time to explore this test automation suite for Skill Collector 1.0! It was my first project as a test automation engineer, and it has been a valuable learning experience for me. I welcome any feedback or suggestions you may have to improve the quality and robustness of these tests.
+
+If you have any questions or ideas for improvement, please reach out to me. I value your feedback and greatly appreciate your input as a junior test automation engineer. Your suggestions will help me further enhance my skills and write better tests in the future.
